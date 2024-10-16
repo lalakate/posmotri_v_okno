@@ -312,7 +312,7 @@ button:has(:focus-visible) {
 }
 
 .content__video-card-description-container {
-  margin: 10px 10px;
+  margin: 10px -10px;
 }
 
 .content__list-item:hover .content__video-card-description-container {
