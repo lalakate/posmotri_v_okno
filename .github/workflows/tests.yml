@@ -9,13 +9,7 @@ on:
 
 
 jobs:
-  download:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/download-artifact@v4
   tests:
-    needs: download
     runs-on: ubuntu-latest
     steps:
     - name: Set up GitHub Actions
@@ -38,5 +32,13 @@ jobs:
         path: tests-selfmade-project-4-public/output.jpg
     - name: Show test results
       run: bash tests-selfmade-project-4-public/result.sh
+    - name: Display structure of downloaded files
+      run: ls -R
+  download:
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
     - name: Display structure of downloaded files
       run: ls -R
