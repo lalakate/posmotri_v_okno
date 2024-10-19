@@ -40,6 +40,10 @@ ol {
   list-style: none;
 }
 
+input {
+  color: white;
+}
+
 .content {
   display: flex;
   justify-self: center;
@@ -64,13 +68,9 @@ ol {
   height: 298px;
   min-width: 100%;
   overflow-y: scroll;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  gap: 30px;
   margin-top: 26px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   justify-content: space-between;
   padding-bottom: 2px;
   padding-left: 2px;
@@ -78,27 +78,19 @@ ol {
 
 .content__details {
   flex-grow: 1;
+  min-width: 399px;
   min-height: 534px;
-  width: 298px;
 }
 
 .content__list::-webkit-scrollbar {
   display: none;
 }
 
-.content__details {
-  min-width: 399px;
-  min-height: 534px;
-}
-
-.cards-list-item-template {
-  display: flex;
-}
-
 .search-form__fieldset {
   display: flex;
   flex-direction: column;
   margin: 3px -5px;
+  border: none;
 }
 
 .search-form__checkbox-list {
@@ -118,6 +110,10 @@ ol {
   margin: 3px 3px;
 }
 
+.content__card-link:focus {
+  outline: none;
+}
+
 .content__video-card-thumbnail {
   width: 190px;
   height: 103px;
@@ -127,6 +123,10 @@ ol {
 .content__list {
     position: relative;
     width: 100%;      
+}
+
+.content__list-item:not(:last-child) {
+  margin-bottom: 30px;
 }
 
 .preloader {
@@ -157,14 +157,28 @@ ol {
 .content__card-link {
   text-decoration: none;
   color: white;
+  display: block;
 }
+
+.content__card-link_current {
+  background-color: #545050;
+}
+
+.content__video-card:active {
+  background-color: #545050;
+}
+
 
 .content__video-card-title {
   font-weight: 700;
   font-size: 30px;
   line-height: 30px;
-  font-family: 'Oswald';
+  font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 192px;
 }
 
 .content__video-card-description {
@@ -177,7 +191,7 @@ ol {
   font-weight: 700;
   font-size: 75px;
   line-height: 70.5px;
-  font-family: 'Oswald';
+  font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
 }
 
@@ -195,15 +209,6 @@ ol {
   white-space: nowrap;
 }
 
-.search-form__fieldset {
-  border: none;
-}
-
-.search-form__label {
-  display: flex;
-  width: fit-content;
-}
-
 .search-form__textfield {
   appearance: none;
   background-color: transparent;
@@ -213,10 +218,15 @@ ol {
   border-top: 1px solid white;
   border-bottom: 1px solid white;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 21.6px;
-  color: #fff / 0.7;
   text-align: left;
+  font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.search-form__textfield::placeholder {
+  color: #fff;
+  opacity: 0.7;
 }
 
 .focus-padding {
@@ -234,9 +244,7 @@ ol {
   border: none;
 }
 
-.button,
-.search-form__submit-button,
-.more-button {
+.button {
   background-color: transparent;
   color: white;
   border: 1px solid white;
@@ -247,25 +255,20 @@ ol {
   width: 194px;
   height: 34px;
   margin: 1px;
+  font-family: 'Fira Sans Condensed', sans-serif;
 }
 
-.button:active,
-.search-form__submit-button:active,
-.more-button:active {
+.button:active {
   background-color: #545050;
   outline: none;
   margin: 0;
 }
 
-.button:hover,
-.search-form__submit-button:hover,
-.more-button:hover {
+.button:hover {
   text-decoration: underline;
 }
 
-.button:focus,
-.search-form__submit-button:focus,
-.more-button:focus {
+.button:focus {
   outline: 1px solid white;
   outline-offset: 1px;  
 }
@@ -293,9 +296,6 @@ button:has(:focus-visible) {
 .search-form__checkbox:checked + .search-form__pseudo-checkbox {
   background-color: transparent;
   border: 1px solid white;
-}
-
-.search-form__checkbox:checked + .search-form__pseudo-checkbox {
   position: relative;
 }
 
@@ -313,10 +313,7 @@ button:has(:focus-visible) {
   display: flex;
   align-items: center;
   gap: 5px;
-}
-
-.content__list-item:active {
-  background-color: #545050;
+  width: fit-content;
 }
 
 .content__video-card-description-container {
@@ -331,6 +328,7 @@ button:has(:focus-visible) {
 .search-form__label-text:hover {
   text-decoration: underline;
   text-decoration-thickness: 1px;
+  cursor: pointer;
 }
 
 .search-form__textfield:focus {
@@ -344,8 +342,4 @@ button:has(:focus-visible) {
 .content__card-link:focus-visible {
   border: 1px solid white;
   border-radius: 0;
-}
-
-input {
-  color: white;
 }
