@@ -65,6 +65,7 @@ input {
   width: 711px;
   height: 386px;
   display: flex;
+  margin-bottom: 16px;
 }
 
 .result__video {
@@ -78,10 +79,10 @@ input {
   display: flex;
   gap: 40px;
   align-items: flex-end;
-  margin-top: 16px;
-  margin-left: 5px;
   height: 54px;
   width: 711px;
+  justify-content: space-evenly;
+  margin-left: 3px;
 }
 
 .content__list {
@@ -259,7 +260,6 @@ input {
   cursor: pointer;
   width: 194px;
   height: 34px;
-  margin: 1px;
   font-family: 'Fira Sans Condensed', sans-serif;
 }
 
